@@ -19,5 +19,6 @@ public class MathController {
 			) {
 		return 1D;
 	}
+	
 }
 
