@@ -20,10 +20,10 @@ public class MathController {
 			@PathVariable(value = "numberTwo")String numberTwo
 			) throws Exception{
 	
-		if(!isNumeric(numberOne) || !isNumeric(numberTwo)) { 
+		if(!Validation.isNumeric(numberOne) || !Validation.isNumeric(numberTwo)) { 
 			throw new UnsupportedMathOperationException("Please set a numeric value!");
 		}
-		return convertToDouble(numberOne) + convertToDouble(numberTwo);
+		return Validation.convertToDouble(numberOne) + Validation.convertToDouble(numberTwo);
 	}
 	
 	@RequestMapping(value = "/sub/{numberOne}/{numberTwo}", method=RequestMethod.GET)
@@ -31,10 +31,10 @@ public class MathController {
 			@PathVariable(value = "numberOne")String numberOne,
 			@PathVariable(value = "numberTwo")String numberTwo
 			) throws Exception{
-		if(!isNumeric(numberOne) || !isNumeric(numberTwo)) { 
+		if(!Validation.isNumeric(numberOne) || !Validation.isNumeric(numberTwo)) { 
 			throw new UnsupportedMathOperationException("Please set a numeric value!");
 		}
-		return convertToDouble(numberOne) - convertToDouble(numberTwo);
+		return Validation.convertToDouble(numberOne) - Validation.convertToDouble(numberTwo);
 	}
 	
 	@RequestMapping(value = "/mult/{numberOne}/{numberTwo}", method=RequestMethod.GET)
@@ -42,10 +42,10 @@ public class MathController {
 			@PathVariable(value = "numberOne") String numberOne,
 			@PathVariable(value = "numberTwo") String numberTwo
 			) throws Exception{
-		if(!isNumeric(numberOne) || !isNumeric(numberTwo)) { 
+		if(!Validation.isNumeric(numberOne) || !Validation.isNumeric(numberTwo)) { 
 			throw new UnsupportedMathOperationException("Please set a numeric value!");
 		}
-		return convertToDouble(numberOne) * convertToDouble(numberTwo);
+		return Validation.convertToDouble(numberOne) * Validation.convertToDouble(numberTwo);
 	}
 	
 	@RequestMapping(value = "/div/{numberOne}/{numberTwo}", method = RequestMethod.GET)
@@ -53,10 +53,10 @@ public class MathController {
 			@PathVariable("numberOne") String numberOne,
 			@PathVariable("numberTwo") String numberTwo
 			) throws Exception{
-		if(!isNumeric(numberOne) || !isNumeric(numberTwo)) { 
+		if(!Validation.isNumeric(numberOne) || !Validation.isNumeric(numberTwo)) { 
 			throw new UnsupportedMathOperationException("Please set a numeric value!");
 		}
-		return convertToDouble(numberOne) / convertToDouble(numberTwo);
+		return Validation.convertToDouble(numberOne) / Validation.convertToDouble(numberTwo);
 	}
 	
 	@RequestMapping(value = "/avg/{numberOne}/{numberTwo}", method = RequestMethod.GET)
@@ -64,35 +64,24 @@ public class MathController {
 			@PathVariable("numberOne") String numberOne,
 			@PathVariable("numberTwo") String numberTwo
 			) throws Exception{
-		if(!isNumeric(numberOne) || !isNumeric(numberTwo)) { 
+		if(!Validation.isNumeric(numberOne) || !Validation.isNumeric(numberTwo)) { 
 			throw new UnsupportedMathOperationException("Please set a numeric value!");
 		}
-		return (convertToDouble(numberOne) + convertToDouble(numberTwo))/2;
+		return (Validation.convertToDouble(numberOne) + Validation.convertToDouble(numberTwo))/2;
 	}
 	
 	@RequestMapping(value = "/sqrt/{number}", method = RequestMethod.GET)
 	public Double sqrt(
 			@PathVariable("number") String number		
 			) throws Exception{
-		if(!isNumeric(number)) { 
+		if(!Validation.isNumeric(number)) { 
 			throw new UnsupportedMathOperationException("Please set a numeric value!");
 		}
-		return Math.sqrt(convertToDouble(number));
+		return Math.sqrt(Validation.convertToDouble(number));
 	}
 	
 	
-	private Double convertToDouble(String strNumber) {
-		if(strNumber == null) return 0D;
-		String number = strNumber.replaceAll(",", ".");
-		if(isNumeric(number)) return Double.parseDouble(number);
-		return 0D;
-	}
 	
-	private boolean isNumeric(String strNumber) {
-		if(strNumber == null) return false;
-		String number = strNumber.replaceAll(",", ".");
-		return number.matches("[-+]?[0-9]*\\.?[0-9]+");
-	}
 	
 	
 	
