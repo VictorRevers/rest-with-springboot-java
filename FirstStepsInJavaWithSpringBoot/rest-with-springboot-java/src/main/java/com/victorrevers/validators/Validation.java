@@ -1,4 +1,4 @@
-package com.victorrevers;
+package com.victorrevers.validators;
 
 public class Validation {
 	public static Double convertToDouble(String strNumber) {

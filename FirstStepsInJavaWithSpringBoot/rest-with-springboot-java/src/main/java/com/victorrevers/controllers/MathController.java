@@ -1,4 +1,4 @@
-package com.victorrevers;
+package com.victorrevers.controllers;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.victorrevers.exceptions.UnsupportedMathOperationException;
 import com.victorrevers.math.MathOps;
+import com.victorrevers.validators.Validation;
 
 
 //FAZER:
