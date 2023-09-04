@@ -8,7 +8,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.victorrevers.exceptions.UnsupportedMathOperationException;
+import com.victorrevers.math.MathOps;
 
+
+//FAZER:
+//Mover a controller para com.victorrevers.controllers
 @RestController //= @Controller \n @ResponseBody
 public class MathController {
 	
@@ -23,7 +27,7 @@ public class MathController {
 		if(!Validation.isNumeric(numberOne) || !Validation.isNumeric(numberTwo)) { 
 			throw new UnsupportedMathOperationException("Please set a numeric value!");
 		}
-		return Validation.convertToDouble(numberOne) + Validation.convertToDouble(numberTwo);
+		return MathOps.Sum(Validation.convertToDouble(numberOne),Validation.convertToDouble(numberTwo));
 	}
 	
 	@RequestMapping(value = "/sub/{numberOne}/{numberTwo}", method=RequestMethod.GET)
@@ -34,7 +38,7 @@ public class MathController {
 		if(!Validation.isNumeric(numberOne) || !Validation.isNumeric(numberTwo)) { 
 			throw new UnsupportedMathOperationException("Please set a numeric value!");
 		}
-		return Validation.convertToDouble(numberOne) - Validation.convertToDouble(numberTwo);
+		return MathOps.Sub(Validation.convertToDouble(numberOne),Validation.convertToDouble(numberTwo));
 	}
 	
 	@RequestMapping(value = "/mult/{numberOne}/{numberTwo}", method=RequestMethod.GET)
@@ -45,7 +49,7 @@ public class MathController {
 		if(!Validation.isNumeric(numberOne) || !Validation.isNumeric(numberTwo)) { 
 			throw new UnsupportedMathOperationException("Please set a numeric value!");
 		}
-		return Validation.convertToDouble(numberOne) * Validation.convertToDouble(numberTwo);
+		return MathOps.Mult(Validation.convertToDouble(numberOne),Validation.convertToDouble(numberTwo));
 	}
 	
 	@RequestMapping(value = "/div/{numberOne}/{numberTwo}", method = RequestMethod.GET)
@@ -56,7 +60,7 @@ public class MathController {
 		if(!Validation.isNumeric(numberOne) || !Validation.isNumeric(numberTwo)) { 
 			throw new UnsupportedMathOperationException("Please set a numeric value!");
 		}
-		return Validation.convertToDouble(numberOne) / Validation.convertToDouble(numberTwo);
+		return MathOps.Div(Validation.convertToDouble(numberOne),Validation.convertToDouble(numberTwo));
 	}
 	
 	@RequestMapping(value = "/avg/{numberOne}/{numberTwo}", method = RequestMethod.GET)
@@ -67,7 +71,7 @@ public class MathController {
 		if(!Validation.isNumeric(numberOne) || !Validation.isNumeric(numberTwo)) { 
 			throw new UnsupportedMathOperationException("Please set a numeric value!");
 		}
-		return (Validation.convertToDouble(numberOne) + Validation.convertToDouble(numberTwo))/2;
+		return MathOps.Avg(Validation.convertToDouble(numberOne),Validation.convertToDouble(numberTwo));
 	}
 	
 	@RequestMapping(value = "/sqrt/{number}", method = RequestMethod.GET)
@@ -77,16 +81,7 @@ public class MathController {
 		if(!Validation.isNumeric(number)) { 
 			throw new UnsupportedMathOperationException("Please set a numeric value!");
 		}
-		return Math.sqrt(Validation.convertToDouble(number));
+		return MathOps.Sqrt(Validation.convertToDouble(number));
 	}
-	
-	
-	
-	
-	
-	
-
-	
-	
 }
 
