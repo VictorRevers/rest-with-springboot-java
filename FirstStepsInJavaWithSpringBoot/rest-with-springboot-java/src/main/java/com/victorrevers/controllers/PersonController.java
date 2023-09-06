@@ -1,4 +1,5 @@
 package com.victorrevers.controllers;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,12 @@ public class PersonController {
 	@Autowired
 	private PersonServices service;
 	//private PersonServices service = new PersonServices();
+	
+	@RequestMapping(method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Person> findAll() throws Exception{
+	
+			return service.findAll();
+	}
 	
 	@RequestMapping(value = "/{id}", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Person findById(@PathVariable(value = "id")String id) throws Exception{
