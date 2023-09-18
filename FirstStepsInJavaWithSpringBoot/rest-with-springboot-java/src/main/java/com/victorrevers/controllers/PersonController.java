@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.victorrevers.exceptions.UnsupportedMathOperationException;
+import com.victorrevers.exceptions.ResourceNotFoundException;
 import com.victorrevers.model.Person;
 import com.victorrevers.services.PersonServices;
 
@@ -33,7 +33,7 @@ public class PersonController {
 	}
 	
 	@RequestMapping(value = "/{id}", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Person findById(@PathVariable(value = "id")String id){
+	public Person findById(@PathVariable(value = "id")Long id){
 	
 			return service.findById(id);
 	}
@@ -56,7 +56,7 @@ public class PersonController {
 			return service.update(person);
 	}
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
-	public void delete(@PathVariable(value = "id") String id){		
+	public void delete(@PathVariable(value = "id") Long id){		
 		service.delete(id);
 	}
 	
