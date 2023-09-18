@@ -1,6 +1,5 @@
 spring:
   datasource:
-    dbcp2:
       driver-class-name: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://localhost:3306/rest_with_spring_boot?useTimezone=true&serverTimezone=UTC
       username: root
@@ -11,6 +10,6 @@ spring:
       ddl-auto: update
     properties: 
       hibernate:
-        dialect: org.hibernte.dialect.MySQL8Dialect
-      show-sql: false 
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    show-sql: false 
     
